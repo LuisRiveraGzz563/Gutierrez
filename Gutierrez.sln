@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gutierrez", "Gutierrez\Gutierrez.csproj", "{B2E5CA02-436B-4BC1-AE6E-2CF71FC5776D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GutierrezAPI", "GutierrezAPI\GutierrezAPI.csproj", "{30F34134-F533-4843-BC03-B8FC0C469B4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2E5CA02-436B-4BC1-AE6E-2CF71FC5776D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2E5CA02-436B-4BC1-AE6E-2CF71FC5776D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2E5CA02-436B-4BC1-AE6E-2CF71FC5776D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2E5CA02-436B-4BC1-AE6E-2CF71FC5776D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30F34134-F533-4843-BC03-B8FC0C469B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F34134-F533-4843-BC03-B8FC0C469B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30F34134-F533-4843-BC03-B8FC0C469B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30F34134-F533-4843-BC03-B8FC0C469B4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0DD4C532-CC2C-4217-BB74-E2DD0E995383}
+	EndGlobalSection
+EndGlobal
