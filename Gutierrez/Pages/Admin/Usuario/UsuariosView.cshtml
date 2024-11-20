@@ -1,0 +1,45 @@
+﻿@page
+
+@{
+    Layout = "_LayoutAdmin";
+}
+
+
+<div class="content">
+    <div class="top-controls">
+        <div class="buttons-group">
+            <button class="btn-green">Agregar usuario</button>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Buscar" class="search-input">
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </div>
+    <table class="data-table-p">
+        <thead>
+            <tr>
+                <th>RFC</th>
+                <th>Proveedor</th>
+                <th>Usuario</th>
+                <th>Estatus</th>
+                <th>Acción</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>18273y273</td>
+                <td>Nombre del proveedor</td>
+                <td>Nombre de usuario</td>
+                <td>BLOQUEAR</td>
+                <td>
+                    
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

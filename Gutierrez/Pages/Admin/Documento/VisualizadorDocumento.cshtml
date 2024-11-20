@@ -1,0 +1,49 @@
+﻿@page
+
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<div class="content">
+            <h2>Validación de documentos</h2>
+            <div class="container">
+                <!-- Visualizador de PDF -->
+                <div class="pdf-viewer">
+                    <embed id="pdf-viewer" type="application/pdf" width="100%" height="100%">
+                </div>
+                
+                <!-- Contenedor de elementos a la derecha -->
+                <div class="right-panel">
+                    <div class="file-input-container">
+                        <input type="text" id="file-path" class="file-path" placeholder="Ruta del archivo" readonly>
+                        <input type="file" id="file-upload" class="file-upload" accept="application/pdf" style="display: none;">
+                        <button class="file-browse" onclick="document.getElementById('file-upload').click();">
+                            <i class="fas fa-folder-open"></i>
+                        </button>
+                    </div>
+                    <div class="observations">
+                        <label for="observations">Observaciones:</label>
+                    <textarea id="observations" class="observations"></textarea>
+                    </div>
+                    
+                    <div class="button-container">
+                        <button class="accept-btn">Aceptar</button>
+                        <button class="reject-btn">Rechazar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<script>
+    document.getElementById('file-upload').addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            // Mostrar la ruta del archivo en el campo de texto
+            document.getElementById('file-path').value = file.name;
+
+            // Crear una URL temporal para el archivo y mostrarlo en el visualizador PDF
+            const fileURL = URL.createObjectURL(file);
+            document.getElementById('pdf-viewer').src = fileURL;
+        }
+    });
+</script>
