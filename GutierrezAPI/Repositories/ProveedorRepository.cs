@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GutierrezAPI.Repositories
 {
-    public class ProveedorRepository(GutierrezdbContext context):Repository<Proveedor>(context)
+    public class ProveedorRepository(LabsysteGutierrezContext context) : Repository<Proveedor>(context)
     {
-        private readonly GutierrezdbContext Context = context;
+        private readonly LabsysteGutierrezContext Context = context;
         public async new Task<IAsyncEnumerable<GetProveedorDTO>> GetAll()
         {
             var lista = Context.ProveedorDocumento
@@ -16,7 +16,7 @@ namespace GutierrezAPI.Repositories
                 .Select(x => new GetProveedorDTO
                 {
                     Id = x.Id,
-                    Nombre = x.IdProveedorNavigation.UsuarioProveedor.First().IdUsuarioNavigation.Nombre,
+                    Nombre = x.IdProveedorNavigation.UsuarioProveedor.First().IdUsuarioNavigation.Nombre.ToString(),
                     Estado = x.IdProveedorNavigation.Estado,
                     Rfc = x.IdProveedorNavigation.Rfc,
                     UltimaFechaModificacion = x.IdProveedorNavigation.UltimaFechaModificacion
@@ -27,10 +27,10 @@ namespace GutierrezAPI.Repositories
         public ProveedorDocumento? GetProveedorDocumentoByRepse(string numrepse)
         {
             var proveedordocumento = Context.ProveedorDocumento
-                .Include(x=>x.IdProveedorNavigation)
-                .Include(x=>x.IdDocumentoNavigation)
+                .Include(x => x.IdProveedorNavigation)
+                .Include(x => x.IdDocumentoNavigation)
                 .FirstOrDefault(x => x.IdProveedorNavigation.NumRegistroRepse == numrepse);
-           
+
             return proveedordocumento;
         }
         public ProveedorDTO? GetProveedor(int id)
@@ -49,7 +49,7 @@ namespace GutierrezAPI.Repositories
                   Telefono = x.Telefono,
                   UltimaFechaModificacion = x.UltimaFechaModificacion
               })
-              .FirstOrDefault(x=>x.Id == id);
+              .FirstOrDefault(x => x.Id == id);
             return datos;
         }
         public IEnumerable<ProveedorDocumento?> GetDocumentosProveedor(int id)

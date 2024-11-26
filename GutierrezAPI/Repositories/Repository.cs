@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GutierrezAPI.Repositories
 {
-    public class Repository<T>(GutierrezdbContext context) : IRepository<T> where T : class
+    public class Repository<T>(LabsysteGutierrezContext context) : IRepository<T> where T : class
     {
         public DbSet<T> GetAll()
         {

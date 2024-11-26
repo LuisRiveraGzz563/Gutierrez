@@ -64,7 +64,6 @@ namespace GutierrezAPI.Controllers
                 {
                     return NotFound("No se ah encontrado el usuario que desea editar");
                 }
-
                 user.Nombre = user.Nombre;
                 user.Correo = user.Correo;
                 user.IdRol = user.IdRol;

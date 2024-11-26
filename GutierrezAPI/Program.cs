@@ -12,8 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 #region  Conexión a la base de datos
-string? DB = builder.Configuration.GetConnectionString("DbLocalConnectionString");
-builder.Services.AddDbContext<GutierrezdbContext>(x =>
+string? DB = builder.Configuration.GetConnectionString("DbConnectionString");
+builder.Services.AddDbContext<LabsysteGutierrezContext>(x =>
 {
     x.UseMySql(DB, ServerVersion.AutoDetect(DB));
     x.ConfigureWarnings(warning =>
