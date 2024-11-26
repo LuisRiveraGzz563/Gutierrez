@@ -2,14 +2,14 @@
     //LLAMAR A LA API CON FETCH
     try {
         //const response = await fetch(`${ApiUrl_local}Proveedor/proveedores`);
-        const response = await fetch(ApiUrl_local+'proveedor'); 
+        const response = await fetch(ApiUrlRelease + 'api/proveedor'); 
         if (response.ok) {
             const proveedores = await response.json(); // Convertir la respuesta en JSON
             mostrarProveedores(proveedores); // Llamar a la función para mostrar los datos
             console.log("entro");
         } else {
             console.error('Error al obtener proveedores:', response.statusText);
-            console.log("noo entro");
+            console.log("no entro");
         }
     } catch (error) {
         console.error('Hubo un problema con la solicitud fetch:', error);
@@ -37,6 +37,3 @@ function mostrarProveedores(proveedores) {
 document.addEventListener('DOMContentLoaded', obtenerProveedores);
 
 
-let Proovedor = document.getElementById("DetalleProveedor").addEventListener("click", function () {
-    window.location.replace("/Admin/DetalleProveedor");
-});
