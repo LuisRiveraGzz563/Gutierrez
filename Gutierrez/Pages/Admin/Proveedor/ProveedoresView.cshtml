@@ -25,25 +25,28 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>18273y273</td>
-                <td>Nombre del proveedor</td>
-                <td>
-                    <input type="radio" name="status_1" id="status_1_1" value="1" onclick="toggleStatus(1, 1)" />
-                    <input type="radio" name="status_1" id="status_1_0" value="0" onclick="toggleStatus(0, 1)" />
-                    <label class="status-label" for="status_1_1">✘</label>
-                </td>
-                <td>
-                    <button class="accept-button">Aceptar</button>
-                    <button class="reject-button">Rechazar</button>
-                </td>
-            </tr>
+            <template>
+                <tr>
+                    <td>18273y273</td>
+                    <td>Nombre del proveedor</td>
+                    <td>
+                        <input type="radio" name="status_1" id="status_1_1" value="1" onclick="toggleStatus(1, 1)" />
+                        <input type="radio" name="status_1" id="status_1_0" value="0" onclick="toggleStatus(0, 1)" />
+                        <label class="status-label" for="status_1_1">✘</label>
+                    </td>
+                    <td>
+                        <button class="accept-button">Aceptar</button>
+                        <button class="reject-button">Rechazar</button>
+                    </td>
+                </tr>
+            </template>
+           
         </tbody>
     </table>
 </div>
-<script src="~/js/Documento.js"/>
+
 <script>
-    function toggleStatus(value, row) {
+    async function toggleStatus(value, row) {
         var label = document.querySelector('.status-label[for="status_' + row + '_1"]');
         if (value === 1) {
             label.textContent = "✔";  // Mostrar paloma si el valor es 1
@@ -54,3 +57,4 @@
         }
     }
 </script>
+<script src="~/js/Documento.js"/>
