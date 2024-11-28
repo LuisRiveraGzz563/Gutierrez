@@ -7,11 +7,11 @@
 <div class="filter-section">
     <div class="filter-group">
         <p>Nombre:</p>
-        <input type="text" placeholder="Nombre del proveedor">
+        <input type="text" id="lblnombre" placeholder="Nombre del proveedor" oninput="filtro()">
     </div>
     <div class="filter-group">
         <p>RFC:</p>
-        <input type="text" placeholder="RFC del proveedor">
+        <input type="text" id="lblrfc" placeholder="RFC del proveedor" oninput="filtro()">
     </div>
 </div>
 <div class="content-p">
@@ -56,5 +56,6 @@
             label.style.color = "#f44336";  // Color de fondo rojo
         }
     }
+
 </script>
 <script src="~/js/Documento.js"/>
