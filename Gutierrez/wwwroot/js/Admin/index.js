@@ -38,3 +38,11 @@ async function mostrarProveedores(proveedores)
 
 //LLAMAR A LA FUNCION
 document.addEventListener('DOMContentLoaded', obtenerProveedores);
+
+async function getdatos() {
+    let response = await fetch('https://gutierrez.labsystec.net/api/Documentos');
+    let datos = await response.json();
+    console.log(datos.length);
+}
+
+getdatos();

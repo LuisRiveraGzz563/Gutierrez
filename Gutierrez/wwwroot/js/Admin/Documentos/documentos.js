@@ -18,7 +18,7 @@
             link.className = "status-item";
 
             const icon = document.createElement("i");
-            icon.className = "fas fa-file-alt";
+            icon.className =     "fas fa-file-alt";
             link.appendChild(icon);
 
             const text = document.createTextNode(` ${mes}`);
