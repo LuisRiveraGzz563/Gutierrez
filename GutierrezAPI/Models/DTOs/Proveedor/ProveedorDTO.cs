@@ -13,7 +13,7 @@ namespace GutierrezAPI.Models.DTOs.Proveedor
         [JsonPropertyName("correoElectronico")]
         public string CorreoElectronico { get; set; } = null!;
         [JsonPropertyName("telefono")]
-        public int Telefono { get; set; }
+        public string Telefono { get; set; } = null!;
         [JsonPropertyName("idTipoRegimen")]
         public int IdTipoRegimen { get; set; }
         [JsonPropertyName("rfc")]

@@ -54,6 +54,8 @@ public partial class LabsysteGutierrezContext : DbContext
 
             entity.ToTable("proveedor");
 
+            entity.HasIndex(e => e.IdProveedorServicios, "fk_UsuarioProveedor_idx");
+
             entity.Property(e => e.Id).HasColumnType("int(11)");
             entity.Property(e => e.CorreoElectronico).HasMaxLength(100);
             entity.Property(e => e.Estado).HasColumnType("int(11)");
@@ -62,7 +64,12 @@ public partial class LabsysteGutierrezContext : DbContext
             entity.Property(e => e.IdTipoRegimen).HasColumnType("int(11)");
             entity.Property(e => e.NumRegistroRepse).HasMaxLength(45);
             entity.Property(e => e.Rfc).HasMaxLength(13);
-            entity.Property(e => e.Telefono).HasColumnType("int(11)");
+            entity.Property(e => e.Telefono).HasMaxLength(10);
+
+            entity.HasOne(d => d.IdProveedorServiciosNavigation).WithMany(p => p.Proveedor)
+                .HasForeignKey(d => d.IdProveedorServicios)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_UsuarioProveedor");
         });
 
         modelBuilder.Entity<ProveedorDocumento>(entity =>

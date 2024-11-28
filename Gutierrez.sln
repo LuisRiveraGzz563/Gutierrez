@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gutierrez", "Gutierrez\Gutierrez.csproj", "{B2E5CA02-436B-4BC1-AE6E-2CF71FC5776D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gutierrez", "Gutierrez\Gutierrez.csproj", "{B2E5CA02-436B-4BC1-AE6E-2CF71FC5776D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GutierrezAPI", "GutierrezAPI\GutierrezAPI.csproj", "{30F34134-F533-4843-BC03-B8FC0C469B4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GutierrezAPI", "GutierrezAPI\GutierrezAPI.csproj", "{30F34134-F533-4843-BC03-B8FC0C469B4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

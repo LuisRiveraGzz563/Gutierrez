@@ -17,10 +17,19 @@ namespace GutierrezAPI.Controllers
         public IActionResult GetAll()
         {
             var usuarios = repos.GetAll()
-                .Include(x => x.IdRolNavigation)
                 .Include(x => x.UsuarioProveedor)
-                .OrderBy(x => x.Nombre);
-
+                    .ThenInclude(x => x.IdProveedorNavigation)
+                        .ThenInclude(x => x.IdProveedorServiciosNavigation)
+                .OrderBy(x => x.Nombre)
+                .Select(x => new GetUsuarioDTO
+                {
+                    Id = x.Id,
+                    Nombre = x.Nombre,
+                    Estatus = x.UsuarioProveedor.First().IdProveedorNavigation.Estado > 0 ? 
+                              x.UsuarioProveedor.First().IdProveedorNavigation.Estado : 0,
+                    Proveedor = x.UsuarioProveedor.First().IdProveedorNavigation.IdProveedorServiciosNavigation.Nombre ?? "N/A",
+                    Rfc = x.UsuarioProveedor.First().IdProveedorNavigation.Rfc ?? "N/A"
+                });
             return usuarios != null ? Ok(usuarios) : NotFound("No se han encontrado usuarios");
         }
 
@@ -42,7 +51,7 @@ namespace GutierrezAPI.Controllers
                     IdRol = usuario.IdRol,
                     Correo = usuario.Correo,
                     Contraseña = Encriptacion.EncriptarSha512(usuario.Contraseña),
-                    Nombre =usuario.Usuario
+                    Nombre = usuario.Usuario
                 };
                 if (repos.Insert(user))
                 {
@@ -50,7 +59,7 @@ namespace GutierrezAPI.Controllers
                     return Ok("Se agrego el usuario");
                 }
             }
-            logger.LogInformation("se intento AGREGAR un usuario con datos incompletos a las: {Time}",DateTime.UtcNow);
+            logger.LogInformation("se intento AGREGAR un usuario con datos incompletos a las: {Time}", DateTime.UtcNow);
             return BadRequest("Ingrese los datos solicitados");
         }
 
@@ -69,10 +78,11 @@ namespace GutierrezAPI.Controllers
                 user.IdRol = user.IdRol;
                 user.Contraseña = Encriptacion.EncriptarSha512(user.Contraseña);
 
-                if (repos.Update(user)){
+                if (repos.Update(user))
+                {
                     var nombre = user.Nombre;
                     logger.LogTrace("se EDITO correctamente el usuario {$nombre} a las {Time}", nombre, DateTime.UtcNow);
-                    return Ok("Se edito el usuario"); 
+                    return Ok("Se edito el usuario");
                 }
             }
             logger.LogInformation("se intento EDITAR un usuario con datos incompletos a las: {Time}", DateTime.UtcNow);
@@ -83,14 +93,14 @@ namespace GutierrezAPI.Controllers
         public IActionResult Eliminar(int id)
         {
             var user = repos.Get(id);
-            if(user == null)
+            if (user == null)
             {
                 return NotFound("Usuario no encontrado");
             }
             else if (repos.Delete(user))
             {
                 var nombre = user.Nombre;
-                logger.LogInformation("Se ah eliminado el usuario {$nombre} a las {Time}", nombre,DateTime.UtcNow);
+                logger.LogInformation("Se ah eliminado el usuario {$nombre} a las {Time}", nombre, DateTime.UtcNow);
                 return Ok("El usuario se ah eliminado");
             }
             //Esta respuesta se conserva en caso de que se utilice un numero que sea mayor a un entero

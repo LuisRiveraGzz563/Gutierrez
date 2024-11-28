@@ -23,6 +23,20 @@ namespace GutierrezAPI.Repositories
             await Task.CompletedTask;
             return lista;
         }
+        public IEnumerable<SolicitarAccesoDTO> GetSolicitudes()
+        {
+            var solicitudes = Context.Proveedor
+                .Include(x=>x.IdProveedorServiciosNavigation)
+                .Select(x=> new SolicitarAccesoDTO
+                {
+                    Id = x.Id,
+                    Nombre = x.IdProveedorServiciosNavigation.Nombre,
+                    Rfc = x.Rfc,
+                    Estado = x.Estado
+                })      
+                .AsEnumerable();
+            return solicitudes;
+        }
         public ProveedorDocumento? GetProveedorDocumentoByRepse(string numrepse)
         {
             var proveedordocumento = Context.ProveedorDocumento

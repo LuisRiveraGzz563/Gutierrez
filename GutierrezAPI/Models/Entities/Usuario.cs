@@ -17,5 +17,7 @@ public partial class Usuario
 
     public virtual Rol IdRolNavigation { get; set; } = null!;
 
+    public virtual ICollection<Proveedor> Proveedor { get; set; } = new List<Proveedor>();
+
     public virtual ICollection<UsuarioProveedor> UsuarioProveedor { get; set; } = new List<UsuarioProveedor>();
 }

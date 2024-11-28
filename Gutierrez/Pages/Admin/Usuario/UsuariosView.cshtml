@@ -56,17 +56,15 @@
                     throw new Error("Error al obtener los datos de la API");
                 }
                 const usuarios = await response.json();
-                console.log(usuarios);
                 // Limpiar el contenido existente de la tabla
                 tableBody.innerHTML = "";
 
                 // Renderizar los datos en la tabla
                 usuarios.forEach((usuario) => {
                     const row = document.createElement("tr");
-
                     row.innerHTML = `
-                        <td>${usuario.usuarioProveedor?.rfc || "N/A"}</td>
-                        <td>${usuario.usuarioProveedor?.nombre || "N/A"}</td>
+                        <td>${usuario.rfc || "N/A"}</td>
+                        <td>${usuario.proveedor || "N/A"}</td>
                         <td>${usuario.nombre}</td>
                         <td>
                             <button class="status-btn">${usuario.estatus ? "DESBLOQUEAR" : "BLOQUEAR"}</button>
@@ -77,7 +75,6 @@
                             </button>
                         </td>
                     `;
-
                     tableBody.appendChild(row);
                 });
 

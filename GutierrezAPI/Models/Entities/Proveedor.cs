@@ -9,11 +9,11 @@ public partial class Proveedor
 
     public string NumRegistroRepse { get; set; } = null!;
 
-    public int? IdProveedorServicios { get; set; }
+    public int IdProveedorServicios { get; set; }
 
     public string CorreoElectronico { get; set; } = null!;
 
-    public int Telefono { get; set; }
+    public string Telefono { get; set; } = null!;
 
     public int IdTipoRegimen { get; set; }
 
@@ -24,6 +24,8 @@ public partial class Proveedor
     public DateOnly UltimaFechaModificacion { get; set; }
 
     public int IdDocumentos { get; set; }
+
+    public virtual Usuario IdProveedorServiciosNavigation { get; set; } = null!;
 
     public virtual ICollection<ProveedorDocumento> ProveedorDocumento { get; set; } = new List<ProveedorDocumento>();
 

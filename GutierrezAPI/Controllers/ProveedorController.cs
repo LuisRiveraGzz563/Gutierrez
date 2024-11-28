@@ -18,7 +18,44 @@ namespace GutierrezAPI.Controllers
             logger.LogInformation("se hizo un GetAll a las: {Time}", DateTime.UtcNow);
             return proveedores != null ? Ok(proveedores) : NotFound("No se han encontrado proveedores");
         }
+        [HttpGet("Solicitudes")]
+        public IActionResult GetSolicitudesAcceso()
+        {
+            var proveedores = repositorio.GetSolicitudes();
+            logger.LogInformation("se hizo una peticion GET para obtener las solicitudes de acceso a las: {Time}", DateTime.UtcNow);
+            return proveedores != null ? Ok(proveedores) : NotFound("No se han encontrado proveedores");
+        }
 
+        [HttpPut("ProcesarSolicitud")]
+        public IActionResult ProcesarSolicitud(SolicitarAccesoDTO dto)
+        {
+            if(dto.Estado <=0 || dto.Estado >= 2)
+            {
+                return Conflict("No puedes ingresar un estado inexistente");
+            }
+            var proveedor = repositorio.Get(dto.Id);
+            if (proveedor == null)
+            {
+                return NotFound("No existe el proveedor");
+            }
+            var rfc = dto.Rfc;
+            logger.LogInformation("Se ah procesado la solicitud del proveedor con el rfc:{rfc} a las {Time}", rfc, DateTime.UtcNow);
+            proveedor.Estado = dto.Estado;
+            if (repositorio.Update(proveedor))
+            {
+                if (proveedor.Estado == 1)
+                {
+                    logger.LogInformation("la solicitud fue aceptada");
+                    return Ok("la solicitud fue aceptada");
+                }
+                else
+                {
+                    logger.LogInformation("la solicitud fue rechazada");
+                    return Ok("la solicitud fue rechazada");
+                }
+            }
+            return Conflict("Contacta con tu administrador");
+        }
         [HttpGet("{id:int}")]
         public IActionResult Get(int id)
         {
@@ -76,6 +113,7 @@ namespace GutierrezAPI.Controllers
                     proveedor.Telefono = dto.Telefono;
                     proveedor.UltimaFechaModificacion = DateOnly.FromDateTime(DateTime.UtcNow);
                     proveedor.Rfc = rfc;
+
                     if (repositorio.Update(proveedor))
                     {
                         logger.LogInformation("Se ah EDITADO un proveedor con el rfc: {@rfc} a las: {Time}", DateTime.UtcNow, rfc);
