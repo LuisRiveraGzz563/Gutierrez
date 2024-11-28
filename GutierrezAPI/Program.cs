@@ -71,7 +71,6 @@ Log.Logger = new LoggerConfiguration().WriteTo.File("/Logs/logger.txt",rollingIn
 //limpiar proveedores
 builder.Logging.ClearProviders();
 #endregion
-
 #region Repositorios
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddTransient<Repository<Usuario>>();
@@ -80,6 +79,7 @@ builder.Services.AddTransient<Repository<Proveedor>>();
 builder.Services.AddTransient<ProveedorRepository>();
 #endregion
 var app = builder.Build();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -92,8 +92,10 @@ app.UseCors(x =>
     x.AllowAnyMethod();
     x.AllowAnyOrigin();
 });
+
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapDefaultControllerRoute();
 app.Run();

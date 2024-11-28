@@ -78,13 +78,12 @@ namespace GutierrezAPI.Controllers
                     NumRegistroRepse = dto.NumRegistroRepse,
                     Rfc = dto.Rfc,
                     Telefono = dto.Telefono,
-                    //Obtener la fecha actual
                     UltimaFechaModificacion = DateOnly.FromDateTime(DateTime.UtcNow),
                     IdTipoRegimen = dto.IdTipoRegimen,
                 };
-                string rfc = dto.Rfc;
                 if (repositorio.Insert(proveedor))
                 {
+                    string rfc = dto.Rfc;
                     logger.LogInformation("Se ah AGREGADO un proveedor con el rfc: {@rfc} a las: {Time}", DateTime.UtcNow, rfc);
                     return Ok("Se ah agregado el proveedor correctamente");
                 }
@@ -107,13 +106,11 @@ namespace GutierrezAPI.Controllers
                 {
                     string rfc = dto.Rfc;
                     proveedor.CorreoElectronico = dto.CorreoElectronico;
-                    proveedor.Estado = dto.Estado;
                     proveedor.IdTipoRegimen = dto.IdTipoRegimen;
                     proveedor.NumRegistroRepse = dto.NumRegistroRepse;
                     proveedor.Telefono = dto.Telefono;
                     proveedor.UltimaFechaModificacion = DateOnly.FromDateTime(DateTime.UtcNow);
                     proveedor.Rfc = rfc;
-
                     if (repositorio.Update(proveedor))
                     {
                         logger.LogInformation("Se ah EDITADO un proveedor con el rfc: {@rfc} a las: {Time}", DateTime.UtcNow, rfc);

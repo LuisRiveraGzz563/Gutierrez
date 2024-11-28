@@ -92,16 +92,20 @@ namespace GutierrezAPI.Controllers
         [HttpDelete("Eliminar/{id:int}")]
         public IActionResult Eliminar(int id)
         {
-            var user = repos.Get(id);
+            var user = repos.Get(id); 
+            
             if (user == null)
             {
                 return NotFound("Usuario no encontrado");
             }
-            else if (repos.Delete(user))
+            else
             {
                 var nombre = user.Nombre;
-                logger.LogInformation("Se ah eliminado el usuario {$nombre} a las {Time}", nombre, DateTime.UtcNow);
-                return Ok("El usuario se ah eliminado");
+                if (repos.Delete(user)) 
+                {
+                    logger.LogInformation("Se ah eliminado el usuario {$nombre} a las {Time}", nombre, DateTime.UtcNow);
+                    return Ok("El usuario se ah eliminado");
+                } 
             }
             //Esta respuesta se conserva en caso de que se utilice un numero que sea mayor a un entero
             return BadRequest("No se ah eliminado el Usuario");
