@@ -46,8 +46,8 @@ namespace GutierrezAPI.Controllers
                 if (documentosrepos.Insert(doc))
                 {
                     string docname = documento.Nombre;
-                    logger.LogInformation("Se ah agregado el documento {@docname} a las {Time}", DateTime.UtcNow, docname);
-                    return Ok("Se ah agregado el documento");
+                    logger.LogInformation("Se ha agregado el documento {@docname} a las {Time}", DateTime.UtcNow, docname);
+                    return Ok("Se ha agregado el documento");
                 }
             }
             return BadRequest("Ingrese los datos del documento");
@@ -74,8 +74,8 @@ namespace GutierrezAPI.Controllers
 
                     if (documentosrepos.Update(documento))
                     {
-                        logger.LogInformation("Se ah editado el documento con el id:{@id}, a las:{Time}", DateTime.UtcNow, dto.Id);
-                        return Ok("Se ah editado el documento correctamente");
+                        logger.LogInformation("Se ha editado el documento con el id:{@id}, a las:{Time}", DateTime.UtcNow, dto.Id);
+                        return Ok("Se ha editado el documento correctamente");
                     }
                 }
             }
@@ -88,15 +88,15 @@ namespace GutierrezAPI.Controllers
             var documento = documentosrepos.Get(id);
             
             if (documento == null)
-                return NotFound("No se ah encontrado el documento");
-            //se eliminara la relacion que existe entre el documento y el proveedor
+                return NotFound("No se ha encontrado el documento");
+            //se eliminara la relacion que exíste entre el documento y el proveedor
             string docname = documento.Nombre;
             if (documentosrepos.Delete(documento))
             {
-                logger.LogInformation("Se al eliminado el documento con el nombre:{@docname}, a las: {Time}",DateTime.UtcNow,docname);
-                return Ok("Se ah eliminado correctamente el documento");
+                logger.LogInformation("Se ha eliminado el documento con el nombre:{@docname}, a las: {Time}",DateTime.UtcNow,docname);
+                return Ok("Se ha eliminado correctamente el documento");
             }
-            return Conflict("No se ah eliminado el documento");
+            return Conflict("No se ha eliminado el documento");
         }
     }
 }

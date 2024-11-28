@@ -53,10 +53,10 @@ namespace GutierrezAPI.Controllers
                     JwtSecurityTokenHandler handler = new();
                     var token = handler.CreateToken(TokenDescriptor);
                     var nombreusuario = user.Nombre;
-                    logger.LogInformation("el usuario {@nombreusuario} ah iniciado sesion a las: {Time}",DateTime.UtcNow, nombreusuario);
+                    logger.LogInformation("el usuario {@nombreusuario} ha iniciado sesion a las: {Time}",DateTime.UtcNow, nombreusuario);
                     return Ok(handler.WriteToken(token));
                 }
-                logger.LogWarning("Se intento iniciar sesion a las:{Time}",DateTime.UtcNow);
+                logger.LogWarning("Se intento iniciar sesion ha las:{Time}",DateTime.UtcNow);
                 return Conflict("Servidor no configurado");
             }
         }

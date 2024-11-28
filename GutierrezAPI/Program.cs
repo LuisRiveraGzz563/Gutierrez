@@ -9,7 +9,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 #region  Conexión a la base de datos
 string? DB = builder.Configuration.GetConnectionString("DbConnectionString");
@@ -72,14 +71,12 @@ Log.Logger = new LoggerConfiguration().WriteTo.File("/Logs/logger.txt",rollingIn
 builder.Logging.ClearProviders();
 #endregion
 #region Repositorios
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddTransient<Repository<Usuario>>();
 builder.Services.AddTransient<Repository<Documento>>();
 builder.Services.AddTransient<Repository<Proveedor>>();
 builder.Services.AddTransient<ProveedorRepository>();
 #endregion
 var app = builder.Build();
-
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();

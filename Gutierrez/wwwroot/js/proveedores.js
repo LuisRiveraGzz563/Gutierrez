@@ -1,7 +1,7 @@
 ﻿async function obtenerProveedores() {
     //LLAMAR A LA API CON FETCH
     try {
-        const response = await fetch(ApiUrlRelease + 'api/Proveedor'); 
+        const response = await fetch('https://gutierrez.labsystec.net/api/Proveedor'); 
         if (response.ok) {
             let proveedores = await response.json(); // Convertir la respuesta en JSON
             mostrarProveedores(proveedores); // Llamar a la función para mostrar los datos
