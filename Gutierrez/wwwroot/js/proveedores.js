@@ -12,6 +12,11 @@
         console.error('Hubo un problema con la solicitud fetch:', error);
     }
 }
+async function verDetalles(proveedor)
+{
+    localStorage.setItem('nombre', proveedor.nombre);
+    window.location.replace('Proveedor/DetalleProveedor');
+}
 //MOSTRAR DATOS
 async function mostrarProveedores(proveedores)
 {
@@ -21,12 +26,13 @@ async function mostrarProveedores(proveedores)
         const tr = document.createElement('tr');
         tr.innerHTML = `
                 <td>${proveedor.rfc}</td>
-                <td><a href="#" class="link">${proveedor.nombre}</a></td>
+                <td><a class="link">${proveedor.nombre}</a></td>
                 <td><span class="repse-indicator-${proveedor.estado === 'Activo' ? 'green' : 'red'}"></span></td>
                 <td>${new Date(proveedor.ultimaFechaModificacion).toLocaleDateString()}</td>
            `;
-         
-        tbody.appendChild(tr);
+        let clon = tr.cloneNode(true);
+        clon.querySelector(".link").onclick = () => verDetalles(proveedor);
+        tbody.appendChild(clon);
     });
 }
 

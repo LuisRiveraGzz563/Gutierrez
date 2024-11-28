@@ -1,17 +1,14 @@
 ﻿@page
-
 @{
     Layout = "_LayoutAdmin";
 }
-
 <div class="content">
             <h2>Validación de documentos</h2>
             <div class="container">
                 <!-- Visualizador de PDF -->
                 <div class="pdf-viewer">
-                    <embed id="pdf-viewer" type="application/pdf" width="100%" height="100%">
+                    <embed id="pdf-viewer" type="application/pdf" style="width:100%;height:100%">
                 </div>
-                
                 <!-- Contenedor de elementos a la derecha -->
                 <div class="right-panel">
                     <div class="file-input-container">
@@ -25,7 +22,6 @@
                         <label for="observations">Observaciones:</label>
                     <textarea id="observations" class="observations"></textarea>
                     </div>
-                    
                     <div class="button-container">
                         <button class="accept-btn">Aceptar</button>
                         <button class="reject-btn">Rechazar</button>
@@ -37,7 +33,9 @@
 <script>
     document.getElementById('file-upload').addEventListener('change', function (event) {
         const file = event.target.files[0];
+        console.log(file);
         if (file) {
+
             // Mostrar la ruta del archivo en el campo de texto
             document.getElementById('file-path').value = file.name;
 
