@@ -9,9 +9,9 @@ namespace GutierrezAPI.Models.DTOs.Documento
         [JsonPropertyName("nombre")]
         public string Nombre { get; set; } = null!;
         [JsonPropertyName("solicitarAPartirDe")]
-        public string SoliciarApartirDe { get; set; } = null!;
+        public DateOnly SoliciarApartirDe { get; set; }
         [JsonPropertyName("enviarCada")]
-        public string EnviarCada { get; set; } = null!;
+        public int EnviarCada { get; set; }
         [JsonPropertyName("link")]
         public string Link { get; set; } = null!;
         [JsonPropertyName("omitir")]

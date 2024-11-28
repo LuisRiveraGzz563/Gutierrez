@@ -11,9 +11,8 @@
 <body>
     <div class="login-container">
         <div class="left-panel">
-            <img src="~/images/gutierrezLOGO.png" alt="Logo Institucional" class="logo">
+            <img src="~/images/LogoGutierrez.png" alt="Logo Institucional" class="logo">
         </div>
-
         <div class="right-panel">
             <form class="login-form">
                 <div class="user-icon"><img src="~/images/IconLogin.png"></div>
@@ -32,11 +31,79 @@
                     <a href="#" class="change-password">Cambiar contraseña</a>
                     <a href="#" class="new-account">Crear nueva cuenta</a>
                 </div>
-                <button type="submit" class="login-button">Iniciar Sesion</button>
                 <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                <div class="login-button" onclick="login()">Iniciar Sesión</div>
             </form>
         </div>
     </div>
+    <script src="~/js/Variables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+    <script>
+        async function login() {
+            // Obtener valores de los inputs
+            let correo = document.querySelector('#username').value;
+            let contrasena = document.querySelector('#password').value;
+            // Validación sencilla de campos vacíos
+            // if (!correo.trim() || !contrasena.trim()) {
+            //     let lblerror = document.getElementById('error');
+            //     lblerror.innerText = "Correo o Contraseña Incorrectos.";
+            //     return;
+            // }
+            try {
+                let bodyrequest =
+                {
+                    "correo": correo,
+                    "contraseña": contrasena
+                }
+                console.log(ApiUrlRelease);
+                let response = await fetch(ApiUrlRelease + 'api/Login',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+
+                        },
+                        body: JSON.stringify(bodyrequest)
+
+                    }
+                ).catch(err => 
+                {
+                    let lblerror = document.getElementById('error');
+                    lblerror.innerText = err;
+                });
+
+                // if (!response.ok) {
+                //     let lblerror = document.getElementById('error');
+                //     lblerror.innerText = "Correo o Contraseña incorrectas.";
+                // }
+                if (response.ok) {
+                    let token = await response.text();
+                    // Guardar el token
+                    localStorage.setItem('jwtToken', token);
+                    // Decodificar el token para obtener el rol del usuario
+                    let decodedToken = jwt_decode(token);
+                    console.log(decodedToken)
+                    // Verificar cómo se codifica el rol en el JWT
+                    let rol = decodedToken.role;
+                    console.log(rol);
+                    // Redirigir a diferentes vistas según el rol del usuario
+                    if (rol === 'Administrador') {
+                        window.location.href = '/Admin';
+                    }
+                    else if (rol === 'Proveedor') {
+                        // Guardar el nombre del guía en el almacenamiento local si es necesario
+                        //window.location.href = '/Proveedor';
+                    }
+                    else {
+                        alert('se ah intentado acceder sin las credenciales incorrectas.')
+                    }
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+        };
+    </script>
 </body>
 </html>
 

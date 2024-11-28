@@ -51,15 +51,12 @@
         const fillTable = async () => {
             try {
                 const response = await fetch("https://gutierrez.labsystec.net/api/Usuarios");
+                
                 if (!response.ok) {
                     throw new Error("Error al obtener los datos de la API");
                 }
-                else{
-                    console.log("entro");
-                }
-
                 const usuarios = await response.json();
-
+                console.log(usuarios);
                 // Limpiar el contenido existente de la tabla
                 tableBody.innerHTML = "";
 

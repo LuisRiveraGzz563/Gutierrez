@@ -9,9 +9,9 @@ public partial class Documento
 
     public string Nombre { get; set; } = null!;
 
-    public string SoliciarApartirDe { get; set; } = null!;
+    public DateOnly SoliciarApartirDe { get; set; }
 
-    public string EnviarCada { get; set; } = null!;
+    public int EnviarCada { get; set; }
 
     public string Link { get; set; } = null!;
 

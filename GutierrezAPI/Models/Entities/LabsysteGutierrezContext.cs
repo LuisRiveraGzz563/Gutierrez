@@ -18,8 +18,6 @@ public partial class LabsysteGutierrezContext : DbContext
 
     public virtual DbSet<Documento> Documento { get; set; }
 
-    public virtual DbSet<Grupo> Grupo { get; set; }
-
     public virtual DbSet<Proveedor> Proveedor { get; set; }
 
     public virtual DbSet<ProveedorDocumento> ProveedorDocumento { get; set; }
@@ -29,12 +27,6 @@ public partial class LabsysteGutierrezContext : DbContext
     public virtual DbSet<Usuario> Usuario { get; set; }
 
     public virtual DbSet<UsuarioProveedor> UsuarioProveedor { get; set; }
-
-    public virtual DbSet<Usuariogrupo> Usuariogrupo { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=gutierrez.labsystec.net;database=labsyste_gutierrez;username=labsyste_gutierrez;password=*E4cq202n", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.11.8-mariadb"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -49,23 +41,11 @@ public partial class LabsysteGutierrezContext : DbContext
             entity.ToTable("documento");
 
             entity.Property(e => e.Id).HasColumnType("int(11)");
-            entity.Property(e => e.EnviarCada).HasMaxLength(30);
+            entity.Property(e => e.EnviarCada).HasColumnType("int(11)");
             entity.Property(e => e.Link).HasColumnType("text");
             entity.Property(e => e.Nombre).HasMaxLength(100);
-            entity.Property(e => e.Omitir).HasColumnType("tinyint(4)");
-            entity.Property(e => e.SoliciarApartirDe)
-                .HasMaxLength(50)
-                .HasColumnName("SoliciarAPartirDe");
-        });
-
-        modelBuilder.Entity<Grupo>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-
-            entity.ToTable("grupo");
-
-            entity.Property(e => e.Id).HasColumnType("int(11)");
-            entity.Property(e => e.Nombre).HasMaxLength(100);
+            entity.Property(e => e.Omitir).HasColumnType("tinyint(2)");
+            entity.Property(e => e.SoliciarApartirDe).HasColumnName("SoliciarAPartirDe");
         });
 
         modelBuilder.Entity<Proveedor>(entity =>
@@ -165,31 +145,6 @@ public partial class LabsysteGutierrezContext : DbContext
                 .HasForeignKey(d => d.IdUsuario)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("usuario_proveedor_ibfk_1");
-        });
-
-        modelBuilder.Entity<Usuariogrupo>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-
-            entity.ToTable("usuariogrupo");
-
-            entity.HasIndex(e => e.IdGrupo, "fk_UsuarioGrupo_Grupo");
-
-            entity.HasIndex(e => e.IdUsuario, "fk_UsuarioGrupo_Usuario");
-
-            entity.Property(e => e.Id).HasColumnType("int(11)");
-            entity.Property(e => e.IdGrupo).HasColumnType("int(11)");
-            entity.Property(e => e.IdUsuario).HasColumnType("int(11)");
-
-            entity.HasOne(d => d.IdGrupoNavigation).WithMany(p => p.Usuariogrupo)
-                .HasForeignKey(d => d.IdGrupo)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_UsuarioGrupo_Grupo");
-
-            entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Usuariogrupo)
-                .HasForeignKey(d => d.IdUsuario)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_UsuarioGrupo_Usuario");
         });
 
         OnModelCreatingPartial(modelBuilder);

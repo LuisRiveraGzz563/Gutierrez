@@ -1,5 +1,4 @@
-﻿using GutierrezAPI.Models.Entities;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace GutierrezAPI.Models.DTOs.Usuario
 {

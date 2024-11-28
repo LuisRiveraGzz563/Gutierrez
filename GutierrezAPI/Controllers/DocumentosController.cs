@@ -1,9 +1,7 @@
 ﻿using GutierrezAPI.Models.DTOs.Documento;
-using GutierrezAPI.Models.DTOs.Proveedor;
 using GutierrezAPI.Models.Entities;
 using GutierrezAPI.Models.Validators;
 using GutierrezAPI.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
