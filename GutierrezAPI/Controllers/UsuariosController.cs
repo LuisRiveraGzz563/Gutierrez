@@ -37,7 +37,6 @@ namespace GutierrezAPI.Controllers
         public IActionResult Get(int id)
         {
             var usuario = repos.Get(id);
-
             return usuario != null ? Ok(usuario) : NotFound("No se han encontrado usuarios");
         }
 
@@ -55,7 +54,7 @@ namespace GutierrezAPI.Controllers
                 };
                 if (repos.Insert(user))
                 {
-                    logger.LogTrace("Se Creo un usuario a las:{Time}", DateTime.UtcNow);
+                    logger.LogTrace("Se AGREGO un usuario a las:{Time}", DateTime.UtcNow);
                     return Ok("Se agrego el usuario");
                 }
             }
@@ -71,13 +70,12 @@ namespace GutierrezAPI.Controllers
                 var user = repos.Get(usuario.Id);
                 if (user == null)
                 {
-                    return NotFound("No se ah encontrado el usuario que desea editar");
+                    return NotFound("No se ha encontrado el usuario que desea editar");
                 }
                 user.Nombre = user.Nombre;
                 user.Correo = user.Correo;
                 user.IdRol = user.IdRol;
                 user.Contraseña = Encriptacion.EncriptarSha512(user.Contraseña);
-
                 if (repos.Update(user))
                 {
                     var nombre = user.Nombre;
@@ -103,12 +101,12 @@ namespace GutierrezAPI.Controllers
                 var nombre = user.Nombre;
                 if (repos.Delete(user)) 
                 {
-                    logger.LogInformation("Se ah eliminado el usuario {$nombre} a las {Time}", nombre, DateTime.UtcNow);
-                    return Ok("El usuario se ah eliminado");
+                    logger.LogInformation("Se ha eliminado el usuario {$nombre} a las {Time}", nombre, DateTime.UtcNow);
+                    return Ok("El usuario se ha eliminado");
                 } 
             }
             //Esta respuesta se conserva en caso de que se utilice un numero que sea mayor a un entero
-            return BadRequest("No se ah eliminado el Usuario");
+            return BadRequest("No se ha eliminado el Usuario");
         }
     }
 }

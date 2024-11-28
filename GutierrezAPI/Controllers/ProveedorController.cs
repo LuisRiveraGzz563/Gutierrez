@@ -124,7 +124,7 @@ namespace GutierrezAPI.Controllers
 
         [HttpDelete("{id:int}")]
         public IActionResult Eliminar(int id)
-        {
+        {                         
             var proveedor = repositorio.Get(id);
             if (proveedor == null)
             {

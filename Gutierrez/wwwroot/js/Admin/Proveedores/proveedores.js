@@ -11,6 +11,7 @@ async function filtro() {
 }
 
 async function llenarTabla(proveedores) {
+    console.log(tablebody);
     // Limpiar el contenido existente de la tabla
     tableBody.innerHTML = "";
     // Renderizar los datos en la tabla
