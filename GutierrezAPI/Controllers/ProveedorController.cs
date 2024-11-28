@@ -2,7 +2,6 @@
 using GutierrezAPI.Models.Entities;
 using GutierrezAPI.Models.Validators;
 using GutierrezAPI.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GutierrezAPI.Controllers

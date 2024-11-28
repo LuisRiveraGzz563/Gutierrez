@@ -9,14 +9,13 @@ namespace GutierrezAPI.Repositories
         private readonly LabsysteGutierrezContext Context = context;
         public async new Task<IAsyncEnumerable<GetProveedorDTO>> GetAll()
         {
-            var lista = Context.ProveedorDocumento
-                .Include(p => p.IdProveedorNavigation)
-                    .ThenInclude(x => x.UsuarioProveedor)
-                        .ThenInclude(x => x.IdUsuarioNavigation)
+            var lista = Context.UsuarioProveedor
+                    .Include(x => x.IdProveedorNavigation)
+                    .Include(x=>x.IdUsuarioNavigation)
                 .Select(x => new GetProveedorDTO
                 {
                     Id = x.Id,
-                    Nombre = x.IdProveedorNavigation.UsuarioProveedor.First().IdUsuarioNavigation.Nombre.ToString(),
+                    Nombre = x.IdUsuarioNavigation.Nombre,
                     Estado = x.IdProveedorNavigation.Estado,
                     Rfc = x.IdProveedorNavigation.Rfc,
                     UltimaFechaModificacion = x.IdProveedorNavigation.UltimaFechaModificacion
