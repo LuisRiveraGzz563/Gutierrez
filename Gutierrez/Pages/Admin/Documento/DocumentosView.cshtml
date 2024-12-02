@@ -8,6 +8,9 @@
 <div class="content">
     <div class="filter-container">
         <p>Documentos requeridos</p>
+        <button id="add-row-btn" class="add-doc-btn">
+            <i class="fas fa-plus"></i> Agregar documento
+        </button>
     </div>
     <table class="data-table-d">
         <thead>
@@ -32,9 +35,8 @@
                         <i class="fas fa-file-alt"></i> Link(PDF)
                     </a>
                 </td>
-                <td>Habilitar/Omitir Documento</td>
+                <td class="toggle-document">Habilitar Documento</td>
                 <td>
-                    <!-- Icono de bote de basura (Font Awesome) -->
                     <button class="delete-btn">
                         <i class="fas fa-trash-alt"></i>
                     </button>
@@ -295,18 +297,58 @@
         </tbody>
     </table>
 
-    <button id="add-row-btn">Agregar Fila</button>
 </div>
+
+<!-- Modal -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <h3>¿Estás seguro de eliminar el documento <span class="title-doc">"Contrato, anexos o adendum"</span> ?</h3>
+        <div class="modal-buttons">
+            <button class="btn-confirm">Eliminar</button>
+            <button class="btn-cancel">Cancelar</button>
+        </div>
+    </div>
+</div>
+
 <script src="~/js/Admin/Documentos/documentos.js"></script>
 
 <script>
-    document.querySelectorAll('.fa-envelope').forEach(icon => {
-        icon.addEventListener('click', () => {
-            icon.classList.add('clicked'); // Añadir la clase de color
-            setTimeout(() => {
-                icon.classList.remove('clicked'); // Removerla después de un momento
-            }, 300); // Duración en milisegundos
+    document.querySelectorAll('.toggle-document').forEach(td => {
+        td.addEventListener('click', () => {
+            if (td.textContent.trim() === "Habilitar Documento") {
+                td.textContent = "Omitir Documento";
+                td.style.color = "red";
+            } else {
+                td.textContent = "Habilitar Documento";
+                td.style.color = "green";
+            }
+        });
+
+        if (td.textContent.trim() === "Habilitar Documento") {
+            td.style.color = "green";
+        } else {
+            td.style.color = "red";
+        }
+    });
+
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    const modal = document.getElementById('deleteModal');
+    const btnCancel = modal.querySelector('.btn-cancel');
+
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            modal.style.display = 'flex';
         });
     });
 
+    btnCancel.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
 </script>
