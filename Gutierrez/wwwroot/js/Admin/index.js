@@ -15,7 +15,7 @@
 async function verDetalles(proveedor)
 {
     localStorage.setItem('nombre', proveedor.nombre);
-    window.location.replace('Proveedor/DetalleProveedor');
+    window.location.replace('Admin/Proveedor/DetalleProveedor');
 }
 //MOSTRAR DATOS
 async function mostrarProveedores(proveedores)
