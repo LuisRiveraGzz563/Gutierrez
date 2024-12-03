@@ -1,0 +1,176 @@
+﻿@page
+@model Gutierrez.Pages.Proveedor.DetalleProveedorModel
+@{
+}
+
+
+<!-- Tabla -->
+<div class="content">
+    <div class="filter-container">
+        <p>Detalles proveedor</p>
+        <select id="filter-select">
+            <option value="" disabled selected>Selecciona un año</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+        </select>
+    </div>
+    <table class="data-table-d">
+        <thead>
+            <tr>
+                <th>Nombre del proveedor</th>
+                <th>Enero</th>
+                <th>Febrero</th>
+                <th>Marzo</th>
+                <th>Abril</th>
+                <th>Mayo</th>
+                <th>Junio</th>
+                <th>Julio</th>
+                <th>Agosto</th>
+                <th>Septiembre</th>
+                <th>Octubre</th>
+                <th>Noviembre</th>
+                <th>Diciembre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Contrato, anexos o adendum</td>
+                <td>
+                    <a href="ValidacionDocumentosAdmin.html" class="status-item">
+                        <i class="fas fa-file-alt"></i> Pendiente
+                    </a>
+                </td>
+                <td>
+                    <a href="ValidacionDocumentosAdmin.html" class="status-item">
+                        <i class="fas fa-file-alt"></i> Pendiente
+                    </a>
+                </td>
+                <td>
+                    <a href="ValidacionDocumentosAdmin.html" class="status-item">
+                        <i class="fas fa-file-alt"></i> Pendiente
+                    </a>
+                </td>
+                <td>
+                    <a href="visualizador.html" class="status-item">
+                        <i class="fas fa-file-alt"></i> Pendiente
+                    </a>
+                </td>
+                <td>
+                    <a href="visualizador.html" class="status-item">
+                        <i class="fas fa-file-alt"></i> Pendiente
+                    </a>
+                </td>
+                <td>
+                    <a href="visualizador.html" class="status-item">
+                        <i class="fas fa-file-alt"></i> Pendiente
+                    </a>
+                </td>
+                <td>
+                    <a href="visualizador.html" class="status-item">
+                        <i class="fas fa-file-alt"></i> Pendiente
+                    </a>
+                </td>
+                <td>
+                    <a href="visualizador.html" class="status-item">
+                        <i class="fas fa-file-alt"></i> Pendiente
+                    </a>
+                </td>
+                <td>
+                    <a href="visualizador.html" class="status-item">
+                        <i class="fas fa-file-alt"></i> Pendiente
+                    </a>
+                </td>
+                <td>
+                    <a href="ValidacionDocumentos.html" class="status-item">
+                        <i class="fas fa-file-alt"></i> Pendiente
+                    </a>
+                </td>
+                <td>
+                    <a href="visualizador.html" class="status-item">
+                        <i class="fas fa-file-alt"></i> Pendiente
+                    </a>
+                </td>
+                <td>
+                    <a href="visualizador.html" class="status-item">
+                        <i class="fas fa-file-alt"></i> Pendiente
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Aviso de registro REPSE</td>
+            </tr>
+            <tr>
+                <td>Nominas timbradas de los trabajadores</td>
+            </tr>
+            <tr>
+                <td>Acuse de recibo ISR retenido por salarios</td>
+            </tr>
+            <tr>
+                <td>Declaracion provisional ISR </td>
+            </tr>
+            <tr>
+                <td>Declaracion provisional ISR </td>
+            </tr>
+            <tr>
+                <td>Declaracion provisional ISR </td>
+            </tr>
+            <tr>
+                <td>Declaracion provisional IVA</td>
+            </tr>
+            <tr>
+                <td>Comprobante de pago</td>
+            </tr>
+            <tr>
+                <td>SIPARE</td>
+            </tr>
+            <tr>
+                <td>Emision mensual anticipada(EMA) </td>
+            </tr>
+            <tr>
+                <td>SUA IMSS </td>
+            </tr>
+            <tr>
+                <td>Resumen de liquidacion</td>
+            </tr>
+            <tr>
+                <td>Comprobante de pago IMSS</td>
+            </tr>
+            <tr>
+                <td>Emision bimestral anticipada (EBA)</td>
+            </tr>
+            <tr>
+                <td>Comprobante de pago Infonavit</td>
+            </tr>
+            <tr>
+                <td>Opinion positiva del SAT</td>
+            </tr>
+            <tr>
+                <td>Opinion positiva del IMSS</td>
+            </tr>
+            <tr>
+                <td>Acuse SISUB</td>
+            </tr>
+            <tr>
+                <td>Acuse ICSOE</td>
+            </tr>
+            <tr>
+                <td>Altas y bajas de trabajadores</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<script>
+    document.querySelectorAll('.fa-envelope').forEach(icon => {
+        icon.addEventListener('click', () => {
+            icon.classList.add('clicked'); // Añadir la clase de color
+            setTimeout(() => {
+                icon.classList.remove('clicked'); // Removerla después de un momento
+            }, 300); // Duración en milisegundos
+        });
+    });
+
+    document.querySelector('.data-table-d thead tr').childNodes[1].textContent = localStorage.getItem('nombre');
+</script>

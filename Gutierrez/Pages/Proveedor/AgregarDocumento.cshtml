@@ -1,0 +1,38 @@
+﻿@page
+@model Gutierrez.Pages.Proveedor.AgregarDocumentoModel
+@{
+}
+
+<div class="content">
+    <!-- Encabezado -->
+    <div class="header">
+        <h1>Agregar documento</h1>
+        <div class="buttons">
+            <button class="btn-add">Agregar</button>
+            <button class="btn-cancel">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Formulario -->
+    <form class="form">
+
+        <div class="form-group">
+            <label for="proveedor">Nombre del documento:</label>
+            <select id="proveedor" class="selectProveedor" name="proveedor">
+                <option disabled selected>Selecciona el nombre del documento</option>
+                <option>Nombre del documento</option>
+            </select>
+            <span class="required">*</span>
+        </div>
+
+        <div class="form-group">
+            <label for="registro-repse">Documento:</label>
+            <div class="input-container-file">
+                <input type="file" id="registro-repse" name="registro-repse">
+                <i class="fas fa-folder-open icon-insert"></i>
+            </div>
+            <span class="required">*</span>
+        </div>
+
+    </form>
+</div>

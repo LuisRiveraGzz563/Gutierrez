@@ -9,157 +9,488 @@
 <!-- Tabla -->
 <div class="content">
     <div class="filter-container">
-        <p>Detalles proveedor</p>
-        <select id="filter-select">
-            <option value="" disabled selected>Selecciona un año</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-            <option value="2025">2025</option>
-        </select>
+        <p>Documentos requeridos</p>
+        <button id="add-row-btn" class="add-doc-btn" onclick="agregarDocumento()">
+            <i class="fas fa-plus"></i> Agregar documento
+        </button>
     </div>
     <table class="data-table-d">
         <thead>
             <tr>
-                <th>Nombre del proveedor</th>
-                <th>Enero</th>
-                <th>Febrero</th>
-                <th>Marzo</th>
-                <th>Abril</th>
-                <th>Mayo</th>
-                <th>Junio</th>
-                <th>Julio</th>
-                <th>Agosto</th>
-                <th>Septiembre</th>
-                <th>Octubre</th>
-                <th>Noviembre</th>
-                <th>Diciembre</th>
+                <th>Documento</th>
+                <th>Nomenclatura</th>
+                <th>Solicitar a partir de:</th>
+                <th>Enviar cada:</th>
+                <th>Ejemplo</th>
+                <th>Omitir</th>
+                <th>Accion</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>Contrato, anexos o adendum</td>
+                <td>1. Contrato<br>1.1 Anexo<br>2. Adendum</td>
+                <td>Siempre</td>
+                <td>Cada que se firme uno nuevo</td>
                 <td>
-                    <a href="ValidacionDocumentos.html" class="status-item">
-                        <i class="fas fa-file-alt"></i> Pendiente
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
                     </a>
                 </td>
+                <td class="toggle-document">Habilitar Documento</td>
                 <td>
-                    <a href="ValidacionDocumentos.html" class="status-item">
-                        <i class="fas fa-file-alt"></i> Pendiente
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            <tr>
+                <td>Aviso de registro al REPSE</td>
+                <td>2. Registro REPSE</td>
+                <td>Siempre</td>
+                <td>Cada que se renueve</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
                     </a>
                 </td>
+                <td class="toggle-document">Habilitar Documento</td>
                 <td>
-                    <a href="ValidacionDocumentos.html" class="status-item">
-                        <i class="fas fa-file-alt"></i> Pendiente
-                    </a>
-                </td>
-                <td>
-                    <a href="visualizador.html" class="status-item">
-                        <i class="fas fa-file-alt"></i> Pendiente
-                    </a>
-                </td>
-                <td>
-                    <a href="visualizador.html" class="status-item">
-                        <i class="fas fa-file-alt"></i> Pendiente
-                    </a>
-                </td>
-                <td>
-                    <a href="visualizador.html" class="status-item">
-                        <i class="fas fa-file-alt"></i> Pendiente
-                    </a>
-                </td>
-                <td>
-                    <a href="visualizador.html" class="status-item">
-                        <i class="fas fa-file-alt"></i> Pendiente
-                    </a>
-                </td>
-                <td>
-                    <a href="visualizador.html" class="status-item">
-                        <i class="fas fa-file-alt"></i> Pendiente
-                    </a>
-                </td>
-                <td>
-                    <a href="visualizador.html" class="status-item">
-                        <i class="fas fa-file-alt"></i> Pendiente
-                    </a>
-                </td>
-                <td>
-                    <a href="visualizador.html" class="status-item">
-                        <i class="fas fa-file-alt"></i> Pendiente
-                    </a>
-                </td>
-                <td>
-                    <a href="visualizador.html" class="status-item">
-                        <i class="fas fa-file-alt"></i> Pendiente
-                    </a>
-                </td>
-                <td>
-                    <a href="visualizador.html" class="status-item">
-                        <i class="fas fa-file-alt"></i> Pendiente
-                    </a>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
                 </td>
             </tr>
             <tr>
-                <td>Aviso de registro REPSE</td>
-            </tr>
-            <tr>
-                <td>Nominas timbradas de los trabajadores</td>
+                <td>Nóminas timbradas de los trabajadores</td>
+                <td>3. Nóminas Timbradas de Trabajadores</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
                 <td>Acuse de recibo ISR retenido por salarios</td>
+                <td>4.1 Acuse de ISR Retenido por Salarios</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
-                <td>Declaracion provisional ISR </td>
+                <td>Declaración provisional ISR</td>
+                <td>4.2 Declaración Provisional ISR</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
-                <td>Declaracion provisional ISR </td>
+                <td>Comprobante de pago ISR</td>
+                <td>4.3 Comprobante de Pago ISR</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
-                <td>Declaracion provisional ISR </td>
+                <td>Acuse declaración del IVA</td>
+                <td>5.1 Acuse del IVA</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
-                <td>Declaracion provisional IVA</td>
+                <td>Declaración provisional IVA</td>
+                <td>5.2 Declaración Provisional del IVA</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
                 <td>Comprobante de pago</td>
+                <td>5.3 Comprobante de Pago IVA</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
                 <td>SIPARE</td>
+                <td>6.1 SIPARE</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
-                <td>Emision mensual anticipada(EMA) </td>
+                <td>Emisión mensual anticipada (EMA)</td>
+                <td>6.2 Emisión Mensual Anticipada</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
-                <td>SUA IMSS </td>
+                <td>SUA IMSS</td>
+                <td>6.3 SUA IMSS</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
-                <td>Resumen de liquidacion</td>
+                <td>Resumen de liquidación</td>
+                <td>6.4 Resumen de Liquidación</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
                 <td>Comprobante de pago IMSS</td>
+                <td>6.5 Comprobante de Pago IMSS</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
-                <td>Emision bimestral anticipada (EBA)</td>
+                <td>Emisión bimestral anticipada (EBA)</td>
+                <td>7.2 Emisión Bimestral Anticipada</td>
+                <td>Siempre</td>
+                <td>Bimestral</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
-                <td>Comprobante de pago Infonavit</td>
+                <td>Comprobante de pago INFONAVIT</td>
+                <td>7.5 Comprobante de Pago INFONAVIT</td>
+                <td>Siempre</td>
+                <td>Bimestral</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
-                <td>Opinion positiva del SAT</td>
+                <td>Opinión positiva del SAT</td>
+                <td>8.1 Op. Positiva SAT</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
-                <td>Opinion positiva del IMSS</td>
+                <td>Opinión positiva del IMSS</td>
+                <td>8.2 Op. Positiva IMSS</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>Opinión positiva del INFONAVIT</td>
+                <td>8.3 Op. Positiva INFONAVIT</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
                 <td>Acuse SISUB</td>
+                <td>9. Acuse SISUB</td>
+                <td>Siempre</td>
+                <td>Cuatrimestral</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
                 <td>Acuse ICSOE</td>
+                <td>10. Acuse ICOSE</td>
+                <td>Siempre</td>
+                <td>Cuatrimestral</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
             <tr>
                 <td>Altas y bajas de trabajadores</td>
+                <td>10. Altas y bajas de trabajadores</td>
+                <td>Siempre</td>
+                <td>Mensual</td>
+                <td>
+                    <a href="#" class="status-item">
+                        <i class="fas fa-file-alt"></i> Link(PDF)
+                    </a>
+                </td>
+                <td class="toggle-document">Habilitar Documento</td>
+                <td>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
             </tr>
-
         </tbody>
     </table>
+
 </div>
+
+<!-- Modal -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <h3>¿Estás seguro de eliminar el documento <span class="title-doc">"Contrato, anexos o adendum"</span> ?</h3>
+        <div class="modal-buttons">
+            <button class="btn-confirm">Eliminar</button>
+            <button class="btn-cancel">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+@* <script src="~/js/Admin/Documentos/documentos.js"></script> *@
+
+<script>
+    function agregarDocumento() {
+        window.location.replace('AgregarDocumento');
+    }
+
+
+    document.querySelectorAll('.toggle-document').forEach(td => {
+        td.addEventListener('click', () => {
+            if (td.textContent.trim() === "Habilitar Documento") {
+                td.textContent = "Omitir Documento";
+                td.style.color = "red";
+            } else {
+                td.textContent = "Habilitar Documento";
+                td.style.color = "green";
+            }
+        });
+
+        if (td.textContent.trim() === "Habilitar Documento") {
+            td.style.color = "green";
+        } else {
+            td.style.color = "red";
+        }
+    });
+
+    // Modal de eliminación
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    const modal = document.getElementById('deleteModal');
+    const btnCancel = modal.querySelector('.btn-cancel');
+    const btnConfirm = modal.querySelector('.btn-confirm');
+    const titleDoc = modal.querySelector('.title-doc');
+    let documentRowToDelete = null;  // Variable para guardar la fila seleccionada para eliminación
+
+    // Mostrar el modal cuando se haga clic en el botón de eliminar
+    deleteButtons.forEach((button, index) => {
+        button.addEventListener('click', (e) => {
+            // Obtener el nombre del documento desde la fila
+            const docName = button.closest('tr').querySelector('td:first-child').textContent.trim();
+            titleDoc.textContent = `"${docName}"`;
+
+            // Guardar la fila a eliminar
+            documentRowToDelete = button.closest('tr');
+
+            // Mostrar el modal
+            modal.style.display = 'flex';
+        });
+    });
+
+    // Cancelar la eliminación y cerrar el modal
+    btnCancel.addEventListener('click', () => {
+        modal.style.display = 'none';
+        documentRowToDelete = null;  // Limpiar la fila seleccionada
+    });
+
+    // Confirmar la eliminación
+    btnConfirm.addEventListener('click', () => {
+        if (documentRowToDelete) {
+            // Eliminar la fila de la tabla
+            documentRowToDelete.remove();
+
+            // Cerrar el modal
+            modal.style.display = 'none';
+            documentRowToDelete = null;  // Limpiar la fila seleccionada
+        }
+    });
+
+    // Cerrar el modal si se hace clic fuera de él
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            documentRowToDelete = null;  // Limpiar la fila seleccionada
+        }
+    });
+</script>
+
+@*
+    *@
