@@ -517,8 +517,9 @@ input[type="radio"] {
 .btn-cancel {
     padding: 10px 30px;
     border: none;
-    border-radius: 30px;
+    border-radius: 8px;
     cursor: pointer;
+    margin: 10px;
 }
 
 .btn-add {

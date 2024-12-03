@@ -1,0 +1,69 @@
+﻿@page
+
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<div class="content">
+    <!-- Encabezado -->
+    <div class="header">
+        <h1>Agregar documento</h1>
+        <div class="buttons">
+            <button class="btn-add">Agregar</button>
+            <button class="btn-cancel">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Formulario -->
+    <form class="form">
+        <!-- Usuario -->
+        <div class="form-group">
+            <label for="usuario">Nombre del documento:</label>
+            <input type="text">
+            <span class="required">*</span>
+        </div>
+        <div class="form-group">
+            <label for="usuario">Nomenclatura:</label>
+            <textarea class="texttarea"></textarea>
+            <span class="required">*</span>
+        </div>
+        <div class="form-group">
+            <label for="usuario">Solicitar a partir de:</label>
+            <input type="text">
+            <span class="required">*</span>
+        </div>
+        <div class="form-group">
+            <label for="usuario">Enviar cada:</label>
+            <input type="text">
+            <span class="required">*</span>
+        </div>
+        <div class="form-group">
+            <label for="registro-repse">Ejemplo de documento:</label>
+            <div class="input-container-file">
+                <input type="file" id="registro-repse" name="registro-repse">
+                <i class="fas fa-folder-open icon-insert"></i>
+            </div>
+            <span class="required">*</span>
+        </div>
+
+    </form>
+</div>
+
+<script>
+
+    document.querySelectorAll('.toggle-password').forEach(icon => {
+        icon.addEventListener('click', function () {
+            const target = document.getElementById(this.dataset.target);
+            if (target.type === 'password') {
+                target.type = 'text';
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            } else {
+                target.type = 'password';
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            }
+        });
+    });
+
+</script>
