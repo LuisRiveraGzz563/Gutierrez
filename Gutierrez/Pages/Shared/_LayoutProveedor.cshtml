@@ -3,9 +3,32 @@
 <head>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="~/images/LogoGutierrez.png" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a id="Index">Inicio</a></li>
+            <li><a id="DocumentosRequeridosView">Documentos requeridos</a></li>
+        </ul>
+        <div class="logout">
+            <i id="salir" class="fas fa-sign-out-alt"></i>
+        </div>
+    </nav>
     <main>
         @RenderBody()
     </main>
 </body>
 </html>
+<script>
+    let Index = document.getElementById("Index").addEventListener("click", function () {
+            window.location.replace("/Admin/Index");
+        });
+         let Documentos = document.getElementById("DocumentosRequeridosView").addEventListener("click", function () {
+                window.location.replace("/Admin/Documento/DocumentosView");
+            });
+            let salir= document.getElementById("salir").addEventListener("click",function(){
+                window.location.replace("Login");
+            })
+</script>
 <script src="~/Scripts/Variables.js"></script>

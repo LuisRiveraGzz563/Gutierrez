@@ -9,8 +9,8 @@
     <div class="header">
         <h1>Agregar documento</h1>
         <div class="buttons">
-            <button class="btn-add">Agregar</button>
-            <button class="btn-cancel">Cancelar</button>
+            <button class="btn-add" onclick="Agregar()">Agregar</button>
+            <button class="btn-cancel" onclick="Cancelar()">Cancelar</button>
         </div>
     </div>
 
@@ -20,22 +20,22 @@
         <div class="form-group">
             <label for="usuario">Nombre del documento:</label>
             <input type="text">
-            <span class="required">*</span>
+            <span class="required"></span>
         </div>
         <div class="form-group">
             <label for="usuario">Nomenclatura:</label>
             <textarea class="texttarea"></textarea>
-            <span class="required">*</span>
+            <span class="required"></span>
         </div>
         <div class="form-group">
             <label for="usuario">Solicitar a partir de:</label>
             <input type="text">
-            <span class="required">*</span>
+            <span class="required"></span>
         </div>
         <div class="form-group">
             <label for="usuario">Enviar cada:</label>
             <input type="text">
-            <span class="required">*</span>
+            <span class="required"></span>
         </div>
         <div class="form-group">
             <label for="registro-repse">Ejemplo de documento:</label>
@@ -50,20 +50,67 @@
 </div>
 
 <script>
-
-    document.querySelectorAll('.toggle-password').forEach(icon => {
-        icon.addEventListener('click', function () {
-            const target = document.getElementById(this.dataset.target);
-            if (target.type === 'password') {
-                target.type = 'text';
-                this.classList.remove('fa-eye');
-                this.classList.add('fa-eye-slash');
-            } else {
-                target.type = 'password';
-                this.classList.remove('fa-eye-slash');
-                this.classList.add('fa-eye');
-            }
-        });
-    });
-
+     // Function to go back (optional)
+      function Agregar() {
+        window.location.replace('DocumentosView')
+      }
+    // Function to go back (optional)
+     function Cancelar() {
+       window.location.replace('DocumentosView')
+     }
 </script>
+@*     <script>
+      // Function to handle adding a new document (POST request)
+      async function agregarDocumento() {
+          // Collect the form data
+          const nombre = document.getElementById("nombre").value;
+          const nomenclatura = document.getElementById("nomenclatura").value;
+          const solicitar = document.getElementById("solicitar").value;
+          const enviar = document.getElementById("enviar").value;
+          const archivo = document.getElementById("archivo").files[0]; // Get the selected file
+
+          // Validate the form fields (optional)
+          if (!nombre || !nomenclatura || !solicitar || !enviar || !archivo) {
+              alert("Por favor, complete todos los campos obligatorios.");
+              return;
+          }
+
+          // Create a FormData object to send the data, including the file
+          const formData = new FormData();
+          formData.append("nombre", nombre);
+          formData.append("nomenclatura", nomenclatura);
+          formData.append("solicitarApartirDe", solicitar);
+          formData.append("enviarCada", enviar);
+          formData.append("archivo", archivo); // Append the file
+
+          try {
+              // Send the data using POST method to the API
+              const response = await fetch("https://gutierrez.labsystec.net/api/documentos/Agregar", {
+                  method: "POST",
+                  body: formData, // Pass the FormData as the body
+              });
+
+              if (response.ok) {
+                  const result = await response.json();
+                  alert("Documento agregado exitosamente");
+
+                  // Redirigir a la vista 'DocumentosView' si el POST es exitoso
+                  window.location.href = "/DocumentosView";  // Cambia la ruta según sea necesario
+
+                  // Optionally reset the form
+                  document.querySelector("form").reset(); // Reset the form
+              } else {
+                  alert("Error al agregar el documento.");
+              }
+          } catch (error) {
+              console.error("Error:", error);
+              alert("Hubo un problema con la solicitud.");
+          }
+      }
+
+      // Function to go back (optional)
+      function regresar() {
+        window.location.replace('DocumentosView')
+      }
+</script> *@
+

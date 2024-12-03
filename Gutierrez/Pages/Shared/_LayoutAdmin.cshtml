@@ -20,7 +20,7 @@
             <li><a  id="DocumentosRequeridosView">Documentos requeridos</a></li>
         </ul>
         <div class="logout">
-            <i class="fas fa-sign-out-alt"></i>
+            <i id="salir" class="fas fa-sign-out-alt"></i>
         </div>
     </nav>
     <main>
@@ -42,6 +42,9 @@
             let Documentos = document.getElementById("DocumentosRequeridosView").addEventListener("click", function () {
                 window.location.replace("/Admin/Documento/DocumentosView");
             });
+            let salir= document.getElementById("salir").addEventListener("click",function(){
+                window.location.replace("Login");
+            })
      </script>
 </body>
 </html>

@@ -10,7 +10,7 @@
         <h1>Registro</h1>
         <div class="buttons">
             <button class="btn-add">Agregar</button>
-            <button class="btn-cancel">Cancelar</button>
+            <button class="btn-cancel" onclick="regresar()">Cancelar</button>
         </div>
     </div>
 
@@ -67,7 +67,7 @@
             <label for="proveedor">Proveedor de Servicios Especializados:</label>
             <select id="proveedor" class="selectProveedor" name="proveedor">
                 <option disabled selected>Selecciona un proveedor</option>
-                <option>Proveedor 1</option>
+                <option>AdminTest</option>
                 <option>Proveedor 2</option>
             </select>
             <span class="required">*</span>
@@ -98,8 +98,12 @@
         </div>
     </form>
 </div>
+<script src="~/js/Admin/Usuarios/agregar.js"></script>
 
 <script>
+     function regresar() {
+        window.location.replace('UsuariosView');
+    }
 
     document.querySelectorAll('.toggle-password').forEach(icon => {
         icon.addEventListener('click', function () {

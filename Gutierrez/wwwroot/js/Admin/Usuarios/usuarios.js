@@ -19,22 +19,29 @@ async function rellenarUsuarios(usuarios) {
     // Renderizar los datos en la tabla
     usuarios.forEach((usuario) => {
         const row = document.createElement("tr");
+
+        // Determinar el texto y la clase del botón según el estatus
+        const estatusTexto = usuario.estatus ? "DESBLOQUEAR" : "BLOQUEAR";
+        const claseBoton = usuario.estatus ? "desbloquear" : "bloquear";
+
         row.innerHTML = `
-                             <td>${usuario.rfc || "N/A"}</td>
-                             <td>${usuario.proveedor || "N/A"}</td>
-                             <td>${usuario.nombre}</td>
-                             <td>
-                                 <button class="status-btn">${usuario.estatus ? "DESBLOQUEAR" : "BLOQUEAR"}</button>
-                             </td>
-                             <td>
-                                 <button class="delete-btn" data-id="${usuario.id}">
-                                     <i class="fas fa-trash-alt"></i>
-                                 </button>
-                             </td>
-                         `;
+            <td>${usuario.rfc || "N/A"}</td>
+            <td>${usuario.proveedor || "N/A"}</td>
+            <td>${usuario.nombre}</td>
+            <td>
+                <button class="toggle-document ${claseBoton}">${estatusTexto}</button>
+            </td>
+            <td>
+                <button class="delete-btn" data-id="${usuario.id}">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </td>
+        `;
+
         tableBody.appendChild(row);
     });
 }
+
 
 document.addEventListener("DOMContentLoaded", async () => {
     // Función para llenar la tabla
