@@ -37,7 +37,7 @@
             <tr>
                 <td>Contrato, anexos o adendum</td>
                 <td>
-                    <a href="ValidacionDocumentosAdmin.html" class="status-item">
+                    <a id="VistaPDF" class="status-item">
                         <i class="fas fa-file-alt"></i> Entregado
                     </a>
                 </td>
@@ -1363,6 +1363,9 @@
 </div>
 
 <script>
+    let DetallePDF = document.getElementById("VistaPDF").addEventListener("click", function () {
+          window.location.replace("/Proveedor/VisualizadorDocumento");
+      });
     document.querySelectorAll('.fa-envelope').forEach(icon => {
         icon.addEventListener('click', () => {
             icon.classList.add('clicked'); // Añadir la clase de color

@@ -8,8 +8,8 @@
     <div class="header">
         <h1>Agregar documento</h1>
         <div class="buttons">
-            <button class="btn-add">Agregar</button>
-            <button class="btn-cancel">Cancelar</button>
+            <button class="btn-add" id="Agregar">Agregar</button>
+            <button class="btn-cancel" id="Cancelar">Cancelar</button>
         </div>
     </div>
 
@@ -51,3 +51,11 @@
 
     </form>
 </div>
+<script>
+    let agregar = document.getElementById("Agregar").addEventListener("click", function () {
+          window.location.replace("/Proveedor/DocumentosRequeridos");
+      });
+      let cancelar = document.getElementById("Cancelar").addEventListener("click", function () {
+          window.location.replace("/Proveedor/DocumentosRequeridos");
+      });
+</script>
